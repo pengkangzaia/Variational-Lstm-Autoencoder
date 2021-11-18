@@ -1,8 +1,11 @@
 from __future__ import print_function
 import numpy as np
-import tensorflow as tf
+# import tensorflow as tf
 import six
 from timeit import default_timer as timer
+import tensorflow.compat.v1 as tf
+
+tf.disable_v2_behavior()
 
 
 class LSTM_Var_Autoencoder(object):
@@ -23,7 +26,7 @@ class LSTM_Var_Autoencoder(object):
                              "third dimension, n_dim."
                              " \n            ")
 
-        tf.compat.v1.reset_default_graph()
+        tf.reset_default_graph()
 
         self.z_dim = z_dim
         self.n_dim = n_dim
@@ -180,7 +183,7 @@ class LSTM_Var_Autoencoder(object):
             learning_rate=0.001,
             batch_size=100,
             num_epochs=200,
-            opt=tf.optimizers.Adam,
+            opt=tf.train.AdamOptimizer,
             REG_LAMBDA=0,
             grad_clip_norm=10,
             optimizer_params=None,
