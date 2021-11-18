@@ -23,7 +23,7 @@ class LSTM_Var_Autoencoder(object):
                              "third dimension, n_dim."
                              " \n            ")
 
-        tf.reset_default_graph()
+        tf.compat.v1.reset_default_graph()
 
         self.z_dim = z_dim
         self.n_dim = n_dim
